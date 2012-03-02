@@ -1,0 +1,131 @@
+.day {
+	float: left;
+	border: 1px solid transparent;
+}
+.half {
+	float:left;
+	width: 18px;
+	height: 25px;
+}
+.present:hover {
+	opacity: 0.8;
+}
+
+.morning {
+	background: #999;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 11px;
+}
+.afternoon {
+	background: #616161;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 11px;
+}
+.head {
+	padding-bottom: 10px;
+}
+h1 {
+	padding-top: 10px;
+	font-family: Helvetica;
+	padding-left: 10px;
+}
+#num {
+	margin-top: -20px;
+	margin-left: 12px;
+	width: 14px;
+	color:white;
+	font-family: helvetica;
+	font-size: 12px;
+	text-align: center;
+}
+.day text {
+	width: 20px;
+	height: 3px;
+	display: block;
+	margin: 10px;
+	text-align: center;
+	color: #8193B6;
+	font-family: helvetica;
+	font-size: 13px;
+	padding-left: 1px;
+}
+.cirle {
+	margin: 0 0px 10px 5px;
+}
+.clear {
+	clear: both;
+}
+.num {
+	padding-top: 2px;
+	padding-left: 1px;
+	font-size: 13px;
+	font-family: helvetica;
+	color: #8193B6;
+	text-align: center;
+	padding-right: 1px;
+}
+a {
+	color: blue;
+	cursor: pointer;
+}
+
+.past {
+	opacity: 0.1;
+}
+.simplemodal-overlay {
+	background: black;	
+}
+
+.simplemodal-container {
+	padding: 10px;
+	background: white;	
+}
+#simplemodal-container a.modalCloseImg {
+	background:url(http://www.ericmmartin.com/wordpress/wp-content/themes/emm-v3/demos/x.png) no-repeat; /* adjust url as required */
+	width:25px;
+	height:29px;
+	display:inline;
+	z-index:3200;
+	position:absolute;
+	top:-15px;
+	right:-18px;
+	cursor:pointer;
+}
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/*@media screen and (max-width: 510px) {*/
+	.day text {
+		width: 19px;
+	}
+	.dot {
+		width: 22px;
+		margin: 6px;
+		height: 22px;
+	}
+	.first {
+		margin-left: 5px !important;
+	}
+	.present:hover {
+	opacity: 1;
+	}
+}
+
+@media only screen and (min-width : 321px) {
+/*@media screen and (orientation:landscape) {*/
+	.day text {
+		width: 20px;
+	}
+	.dot {
+		width: 35px;
+		margin: 10px;
+		height: 35px;
+	}
+	.first {
+		margin-left: 10px !important;
+	}
+	.sunday {
+		margin-left: 10px;
+	}
+}
