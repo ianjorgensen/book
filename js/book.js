@@ -82,9 +82,9 @@ var unbook = function(id) {
 	
 	$.get(window.location.pathname + '/unbook?date=' + id, function(data) {
 		if (endsWith(id,'0')) {
-			$('#' + id).css({'background':'#999'});
+			$('#' + id).css({'background':'#C2C2C2'});
 		} else {
-			$('#' + id).css({'background':'#616161'});
+			$('#' + id).css({'background':'#9C9C9C'});
 		}
 		
 		$('#' + id).unbind('click');

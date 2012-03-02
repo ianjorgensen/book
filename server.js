@@ -6,6 +6,8 @@ var common = require('common');
 var file = require('./lib/file').file;
 var db = require('mongojs').connect('mongodb://root:root@staff.mongohq.com:10084/vedbaek-booking',['booking']);
 
+// add more than one resource to book. mark months in html. When hovering over a taken spot see all other spots be that person highlighted.
+
 var port = process.argv[2] || 8080;
 var users = {
 	ian : {
