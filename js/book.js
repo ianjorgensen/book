@@ -19,8 +19,6 @@ ider.add = function(id) {
 	if(id.split('-')[3] === '0') {
 		return id.substring(0,id.length - 1) + '1';
 	}
-	console.log(ider.toDate(id));
-	console.log(addDay(ider.toDate(id),1));
 	return dateId(addDay(ider.toDate(id),1)) + '-0';
 };
 
@@ -125,11 +123,9 @@ var unbook = function(id) {
 };
 
 var fetch = function(user) {
-	console.log('fetching...');
 	$.get('/bookings', function(bookings) {
 		$.each(bookings, function(i, booking) {
 			$('#' + booking.bookingId).unbind('click');
-			console.log(booking);
 			if (booking.user.name === user) {
 				$('#' + booking.bookingId).css({'background':'green'});	
 				$('#' + booking.bookingId).click(function() {
@@ -149,8 +145,13 @@ var fetch = function(user) {
 };
 
 $(function() {
-	var user = window.location.pathname.match(/\/user\/(\w+)/)[1];
+	var user = (window.location.pathname.match(/\/user\/(\w+)/) || [0,0])[1];
 
+	if(!user) {
+		$('#book').hide();	
+		$('.nouser').show();
+	}
+	$('#book').text('Hej ' + user + '! ' + $('#book').text());
 	$('#boat .days').html(days(addDay(new Date(), 60)));
 
 	$('#book').click(function() {
@@ -168,7 +169,9 @@ $(function() {
 
 	$.each($('.half'), function(i,half) {
 		$(half).click(function() {
-			book($(half).attr('id'));
+			if(user) {
+				book($(half).attr('id'));
+			}
 		});
 	});
 

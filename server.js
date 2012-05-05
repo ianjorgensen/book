@@ -29,7 +29,15 @@ var respond = function(response, data, status) {
 	response.end(JSON.stringify(data, null, '\t'));			
 };
 
-server.get('/user/{user}', file('./html/book.html'));
+server.get('/user/{user}', function(request, response) {
+	if(users[request.params.user]) {
+		file('./html/book.html')(request, response)
+	} else {
+		response.end('Den bruger findes ikke');
+	}
+});
+
+server.get('', file('./html/book.html'));
 
 server.get('/bookings', function(request, response) {
 	db.booking.find(function(err, data) {
