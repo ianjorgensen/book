@@ -139,7 +139,7 @@ var fetch = function(user) {
 					// todo add super nice sms and email link subject.
 					var subject = 'Booking ' + ider.niceDate(booking.bookingId);
 
-					$.modal(booking.user.fullname + ' har booket den tid. <br><br>Antal personer og bemærkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
+					$.modal(booking.user.fullname + ' har booket den tid. <br><br>Antal personer og bemaerkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
 				});
 			}
 		});
