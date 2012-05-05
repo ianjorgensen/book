@@ -81,7 +81,7 @@ a {
 	background: white;	
 }
 #simplemodal-container a.modalCloseImg {
-	background:url(http://www.ericmmartin.com/wordpress/wp-content/themes/emm-v3/demos/x.png) no-repeat; /* adjust url as required */
+	background:url(/css/x.png) no-repeat; /* adjust url as required */
 	width:25px;
 	height:29px;
 	display:inline;

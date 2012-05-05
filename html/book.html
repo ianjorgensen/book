@@ -10,6 +10,24 @@
 	<script src="/js/book.js" ></script>
 	<!-- Modernizr (rest of the scripts bottom of page) -->
 	<script src="http://www.antarcticstation.org/assets/js/modernizr.js"></script>
+	<style>
+	#book, #start {
+		background: lightGreen;
+		border: 5px;
+		text-align: center;
+		padding: 10px 0;
+		cursor: pointer;
+	}
+	#book:hover, #start:hover {
+		background: green;
+	} 
+	textarea {
+		margin: 20px 0;
+	}
+	h1 {
+		text-align: center;
+	}
+	</style>
 </head>
 <body>
 	<div id='main'>
@@ -25,6 +43,7 @@
 			<div class='clear'></div>
 			<div class='days'>
 			</div>
+			<div id='book'>Book a time slot</div>
 		</div>
 	</div>
 	<script src="http://www.antarcticstation.org/assets/js/ios-orientationchange-fix.js"></script>

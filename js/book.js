@@ -5,14 +5,27 @@ var endsWith = function(str,suffix) {
 var month = ['Januar', 'Febuar', 'Marts', 'April', 'May', 'Juni', 'Juli', 'August', 'September', 'November', 'December'];
 var daynames = ['Sondag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lordag'];
 
-var niceDate = function(id) {
-	var s = id.split('-');
-	var date = new Date(s[1] + ' ' + s[0] + ' ' + s[2]);
-	
-	return daynames[date.getDay()] + ' ' + date.getDate() + ' ' + month[date.getMonth()];
+var ider = {
+	toDate: function(id) {
+		var s = id.split('-');
+		return new Date(s[1] + ' ' + s[0] + ' ' + s[2]);	
+	}
 }
+ider.niceDate = function(id) {
+	var date = ider.toDate(id);	
+	return daynames[date.getDay()] + ' ' + date.getDate() + ' ' + month[date.getMonth()];
+};
+ider.add = function(id) {
+	if(id.split('-')[3] === '0') {
+		return id.substring(0,id.length - 1) + '1';
+	}
+	console.log(ider.toDate(id));
+	console.log(addDay(ider.toDate(id),1));
+	return dateId(addDay(ider.toDate(id),1)) + '-0';
+};
+
 var dateId = function(date) {
-return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 };
 
 var addDay = function(date, days) {
@@ -24,6 +37,8 @@ var getMonday = function(d) {
       diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
   return new Date(d.setDate(diff));
 }
+
+var booking = false;
 
 var days = function(stop) {
 	var date = getMonday(new Date());
@@ -52,14 +67,24 @@ var days = function(stop) {
 	return rows;	
 };
 
+/*var period = {
+	enabled: false,
+	start: null
+};*/
+
 var book = function(id) {
+	if (!booking) {
+		return;
+	}
+
 	var color = $('#' + id).css('background');
 	$('#' + id).css({'background':'yellow'});
 	
-	$.get(window.location.pathname + '/book?date=' + id, function(data) {
+	$.get(window.location.pathname + '/book?date=' + id + '&notes=' + notes, function(data) {
 		if (data.taken) {
 			$('#' + id).css({'background':color});
 			$.modal('Den tid er allerede booket');
+			period.enabled = false;
 			return;
 		}
 
@@ -67,7 +92,7 @@ var book = function(id) {
 		$('#' + id).unbind('click');
 		$('#' + id).click(function() {
 			unbook($('#' + id).attr('id'));
-		});
+		});		
 	}).error(function() {
 		$('#' + id).css({'background':'orange'});
 		setTimeout(function() {
@@ -104,6 +129,7 @@ var fetch = function(user) {
 	$.get('/bookings', function(bookings) {
 		$.each(bookings, function(i, booking) {
 			$('#' + booking.bookingId).unbind('click');
+			console.log(booking);
 			if (booking.user.name === user) {
 				$('#' + booking.bookingId).css({'background':'green'});	
 				$('#' + booking.bookingId).click(function() {
@@ -113,9 +139,9 @@ var fetch = function(user) {
 				$('#' + booking.bookingId).css({'background':'red'});
 				$('#' + booking.bookingId).click(function() {
 					// todo add super nice sms and email link subject.
-					var subject = 'Booking ' + niceDate(booking.bookingId);
+					var subject = 'Booking ' + ider.niceDate(booking.bookingId);
 
-					$.modal(booking.user.fullname + ' har booket den tid.<br> Prov at kontakt ham. <br><br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
+					$.modal(booking.user.fullname + ' har booket den tid. <br>Bemaerkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
 				});
 			}
 		});
@@ -126,6 +152,17 @@ $(function() {
 	var user = window.location.pathname.match(/\/user\/(\w+)/)[1];
 
 	$('#boat .days').html(days(addDay(new Date(), 60)));
+
+	$('#book').click(function() {
+		$.modal('<p>Hvor mange skal i vaere<br>og andre bemaerkninger</p>'
+			+'<textarea></textarea>'
+			+'<div id="start">Start</div>');
+		$('#start').click(function() {
+			booking = true;
+			notes = $('textarea').val();
+			$.modal.close();
+		});
+	});
 
 	$.each($('.half'), function(i,half) {
 		$(half).click(function() {

@@ -13,20 +13,26 @@ var users = {
 	ian : {
 		name: 'ian',
 		fullname: 'Ian Jorgensen',
-		email: 'i@ge.tt',
-		phone: '004527187566'
+		email: 'jorgensen.ian@gmail.com',
+		phone: '004542834101'
 	},
 	mads: {
 		name: 'mads',
 		fullname: 'Mads Ring',
 		email: 'mads@ri.ng',
 		phone: '00453232323'
-	}
+	},
+	claus: {
+		name: 'claus',
+		fullname: 'Claus',
+		email: 'mads@ri.ng',
+		phone: '00453232323'
+	},
 };
 
 var respond = function(response, data, status) {
 	response.writeHead(status || 200, {'content-type':'application/json'});
-	response.end(JSON.stringify(data));			
+	response.end(JSON.stringify(data, null, '\t'));			
 };
 
 server.get('/user/{user}', file('./html/book.html'));
@@ -40,6 +46,9 @@ server.get('/bookings', function(request, response) {
 		respond(response, data);
 	});
 });
+server.get('/users', function(request, response) {
+	respond(response, users);
+});
 server.get('/user/{user}/book', function(request, response) {
 	if (!request.query.date) {
 		respond(response, {err:'no date'}, 500);
@@ -51,7 +60,7 @@ server.get('/user/{user}/book', function(request, response) {
 			respond(response, {taken:1}, 200);
 			return;
 		}
-		db.booking.save({bookingId: request.query.date,user: users[request.params.user]}, common.fork(function(err) {
+		db.booking.save({bookingId: request.query.date, notes: request.query.notes,user: users[request.params.user]}, common.fork(function(err) {
 			respond(response, {err:'no date'}, 500);
 		}, function(data) {
 			respond(response, {}, 200);
