@@ -36,7 +36,7 @@ var getMonday = function(d) {
   return new Date(d.setDate(diff));
 }
 
-var booking = false;
+var isbooking = false;
 
 var days = function(stop) {
 	var date = getMonday(new Date());
@@ -71,14 +71,16 @@ var days = function(stop) {
 };*/
 
 var book = function(id) {
-	if (!booking) {
+	if (!isbooking) {
 		return;
 	}
 
 	var color = $('#' + id).css('background');
 	$('#' + id).css({'background':'yellow'});
 	
-	$.get(window.location.pathname + '/book?date=' + id + '&notes=' + notes, function(data) {
+	console.log(id);
+	var url = window.location.pathname + '/book?date=' + id + '&notes=' + notes;
+	$.get(url, function(data) {
 		if (data.taken) {
 			$('#' + id).css({'background':color});
 			$.modal('Den tid er allerede booket');
@@ -126,7 +128,7 @@ var fetch = function(user) {
 	$.get('/bookings', function(bookings) {
 		$.each(bookings, function(i, booking) {
 			$('#' + booking.bookingId).unbind('click');
-			if (booking.user.name === user) {
+			if (user && booking.user.name === user) {
 				$('#' + booking.bookingId).css({'background':'green'});	
 				$('#' + booking.bookingId).click(function() {
 					unbook(booking.bookingId);
@@ -137,7 +139,7 @@ var fetch = function(user) {
 					// todo add super nice sms and email link subject.
 					var subject = 'Booking ' + ider.niceDate(booking.bookingId);
 
-					$.modal(booking.user.fullname + ' har booket den tid. <br>Bemærkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
+					$.modal(booking.user.fullname + ' har booket den tid. <br><br>Antal personer og bemærkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
 				});
 			}
 		});
@@ -155,13 +157,12 @@ $(function() {
 	$('#boat .days').html(days(addDay(new Date(), 60)));
 
 	$('#book').click(function() {
-
 		$.modal('<p>Hvor mange skal i vaære?<br>og evt. bemærkninger</p>'
 			+'<textarea></textarea>'
 			+'<div id="start">Start</div>');
 		$('#start').click(function() {
 			$('#book').hide();
-			booking = true;
+			isbooking = true;
 			notes = $('textarea').val();
 			$.modal.close();
 		});
