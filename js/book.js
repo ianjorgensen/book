@@ -152,8 +152,9 @@ $(function() {
 	if(!user) {
 		$('#book').hide();	
 		$('.nouser').show();
+		$('.isuser').hide();
 	}
-	
+
 	$('#boat .days').html(days(addDay(new Date(), 60)));
 
 	$('#book').click(function() {
