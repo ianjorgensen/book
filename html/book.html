@@ -20,6 +20,11 @@
 	}
 	#book:hover, #start:hover {
 		background: green;
+	}
+	.calendar {
+		margin-left: auto;
+		margin-right: auto;
+		width: 310px;
 	} 
 	textarea {
 		margin: 20px 0;
@@ -33,15 +38,16 @@
 	<div id='main'>
 		<div id='boat'>
 			<h1>Arkitekten</h1>
-			<div class='day head'><text>MAN</text></div>
-			<div class='day head'><text>TIR</text></div>
-			<div class='day head'><text>ONS</text></div>
-			<div class='day head'><text>TOR</text></div>
-			<div class='day head'><text>FRE</text></div>
-			<div class='day head'><text>LOR</text></div>
-			<div class='day head'><text>SON</text></div>
-			<div class='clear'></div>
-			<div class='days'>
+			<div class='calendar'>
+				<div class='day head'><text>MAN</text></div>
+				<div class='day head'><text>TIR</text></div>
+				<div class='day head'><text>ONS</text></div>
+				<div class='day head'><text>TOR</text></div>
+				<div class='day head'><text>FRE</text></div>
+				<div class='day head'><text>LOR</text></div>
+				<div class='day head'><text>SON</text></div>
+				<div class='clear'></div>
+				<div class='days'></div>
 			</div>
 			<div id='book'>Book a time slot</div>
 		</div>

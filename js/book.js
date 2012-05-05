@@ -154,10 +154,12 @@ $(function() {
 	$('#boat .days').html(days(addDay(new Date(), 60)));
 
 	$('#book').click(function() {
+
 		$.modal('<p>Hvor mange skal i vaere<br>og andre bemaerkninger</p>'
 			+'<textarea></textarea>'
 			+'<div id="start">Start</div>');
 		$('#start').click(function() {
+			$('#book').hide();
 			booking = true;
 			notes = $('textarea').val();
 			$.modal.close();
