@@ -157,7 +157,7 @@ $(function() {
 	$('#boat .days').html(days(addDay(new Date(), 60)));
 
 	$('#book').click(function() {
-		$.modal('<p>Hvor mange skal i vaære?<br>og evt. bemærkninger</p>'
+		$.modal('<p>Hvor mange skal i vaere?<br>og evt. bemaerkninger</p>'
 			+'<textarea></textarea>'
 			+'<div id="start">Start</div>');
 		$('#start').click(function() {
