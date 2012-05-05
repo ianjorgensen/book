@@ -141,7 +141,7 @@ var fetch = function(user) {
 					// todo add super nice sms and email link subject.
 					var subject = 'Booking ' + ider.niceDate(booking.bookingId);
 
-					$.modal(booking.user.fullname + ' har booket den tid. <br>Bemaerkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
+					$.modal(booking.user.fullname + ' har booket den tid. <br>Bemærkninger:<br>' + (booking.notes || '') + '<br><br> Kontakt ham pa:<br>tlf: <a href="tel:'+booking.user.phone+'">'+booking.user.phone+'</a><br>mail: <a href="mailto:'+booking.user.email+'?subject='+subject+'">'+booking.user.email+'</a><br>');
 				});
 			}
 		});
@@ -155,7 +155,7 @@ $(function() {
 
 	$('#book').click(function() {
 
-		$.modal('<p>Hvor mange skal i vaere<br>og andre bemaerkninger</p>'
+		$.modal('<p>Hvor mange skal i vaære?<br>og evt. bemærkninger</p>'
 			+'<textarea></textarea>'
 			+'<div id="start">Start</div>');
 		$('#start').click(function() {

@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Vedbaek Surf Club Booking</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
@@ -21,11 +22,15 @@
 	#book:hover, #start:hover {
 		background: green;
 	}
-	.calendar {
+	#boat {
 		margin-left: auto;
 		margin-right: auto;
 		width: 310px;
 	} 
+	p {
+		color: gray;
+		margin: 10px 0;
+	}
 	textarea {
 		margin: 20px 0;
 	}
@@ -38,6 +43,9 @@
 	<div id='main'>
 		<div id='boat'>
 			<h1>Arkitekten</h1>
+			<p>Kalendar nedunder kan du brug for at booke klubens båd - Arkitekten - et dage af gange. Dagene er delt i to, første halv er fra kl 07:00 til 14:00, anden halve fra 14:00 til 12:00.</p>
+			<p>Hvis tid slot er rød det er frodi den er allerede booket. Du kan klikke pa tid slot for at se hvem har booked den. Så kan du prøve at kontake den der har booket tiden for at se om du maå kom med!</p>
+			<div id='book'>klikke her for at booke et tid slot</div>
 			<div class='calendar'>
 				<div class='day head'><text>MAN</text></div>
 				<div class='day head'><text>TIR</text></div>
@@ -49,7 +57,7 @@
 				<div class='clear'></div>
 				<div class='days'></div>
 			</div>
-			<div id='book'>Book et tid slot</div>
+			
 		</div>
 	</div>
 	<script src="http://www.antarcticstation.org/assets/js/ios-orientationchange-fix.js"></script>
