@@ -153,7 +153,7 @@ $(function() {
 		$('#book').hide();	
 		$('.nouser').show();
 	}
-	$('#book').text('Hej ' + user + '! ' + $('#book').text());
+	
 	$('#boat .days').html(days(addDay(new Date(), 60)));
 
 	$('#book').click(function() {
