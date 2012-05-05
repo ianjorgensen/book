@@ -19,15 +19,9 @@ var users = {
 	mads: {
 		name: 'mads',
 		fullname: 'Mads Ring',
-		email: 'mads@ri.ng',
-		phone: '00453232323'
-	},
-	claus: {
-		name: 'claus',
-		fullname: 'Claus',
-		email: 'mads@ri.ng',
-		phone: '00453232323'
-	},
+		email: 'd7519@yahoo.dk',
+		phone: '004526244067'
+	}
 };
 
 var respond = function(response, data, status) {
