@@ -21,6 +21,24 @@ var users = {
 		fullname: 'Mads Ring',
 		email: 'd7519@yahoo.dk',
 		phone: '004526244067'
+	},
+	henning : {
+		name: 'henning',
+		fullname: 'Henning Bundgaard',
+		email: 'henningbundgaard@dadlnet.dk',
+		phone: '26112290'
+	},
+	claus : {
+		name: 'claus',
+		fullname: 'Claus Jul Andersen',
+		email: 'clausjulandersen@hotmail.com',
+		phone: '26393763'
+	},
+	iben : {
+		name: 'iben',
+		fullname: 'Iben Nordmark Støckler',
+		email: 'ibenns000@hotmail.com',
+		phone: '31370777'
 	}
 };
 
