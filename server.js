@@ -39,6 +39,12 @@ var users = {
 		fullname: 'Iben Nordmark Støckler',
 		email: 'ibenns000@hotmail.com',
 		phone: '31370777'
+	},
+	anders : {
+		name: 'anders',
+		fullname: 'Anders Jørgensen',
+		email: 'andjor81@gmail.com',
+		phone: '29720065'
 	}
 };
 
