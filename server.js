@@ -45,6 +45,18 @@ var users = {
 		fullname: 'Anders Jørgensen',
 		email: 'andjor81@gmail.com',
 		phone: '29720065'
+	},
+	jesper : {
+		name: 'jesper',
+		fullname: 'Jesper Schmidt',
+		email: 'Jesper_schmidt@hotmail.com',
+		phone: '49112705'
+	},
+	jens : {
+		name: 'jens',
+		fullname: 'Jens Holm',
+		email: 'Jholm@frederikssund.dk',
+		phone: '24693712'
 	}
 };
 
