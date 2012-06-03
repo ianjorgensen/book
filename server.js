@@ -57,6 +57,24 @@ var users = {
 		fullname: 'Jens Holm',
 		email: 'Jholm@frederikssund.dk',
 		phone: '24693712'
+	},
+	irene : {
+		name: 'irene',
+		fullname: 'Irene Schwartz',
+		email: 'europasejler@live.dk',
+		phone: '30291768'
+	},
+	kroyer : {
+		name: 'kroyer',
+		fullname: 'Anders Krøyer',
+		email: 'anders@kroyer.dk',
+		phone: '20116788'
+	},
+	knud : {
+		name: 'knud',
+		fullname: 'Knud Erhard Schirmer',
+		email: 'knud_schirmer@hotmail.com',
+		phone: '61618419'
 	}
 };
 
