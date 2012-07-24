@@ -10,6 +10,24 @@ var db = require('mongojs').connect('mongodb://root:root@staff.mongohq.com:10084
 
 var port = process.argv[2] || 8080;
 var users = {
+	birgitte: {
+		name: 'birgitte',
+		fullname: 'Birgitte Overgaard Madsen',
+		email:'biroma@gmail.com',
+		phone:'61775121'
+	},
+	signe: {
+		name: 'signe',
+		fullname: 'Signe Lyng',
+		email:'signe@lyng.dk',
+		phone:'22840561'
+	},
+	erhard: {
+		name: 'erhard',
+		fullname: 'Knud Erhard Schirmer',
+		email:'Knud_schirmer@hotmail.com',
+		phone:'61618419'
+	},
 	ian : {
 		name: 'ian',
 		fullname: 'Ian Jorgensen',
